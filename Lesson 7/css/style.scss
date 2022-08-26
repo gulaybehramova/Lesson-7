@@ -1,0 +1,107 @@
+*{
+    // user-select: none;    saytda hecneyi secmek olmur
+    &::selection{            /*saytda neyi secsen bu reng olur*/
+        background-color: rebeccapurple;
+        color: wheat;
+    }
+}
+
+
+// Gradient-renglerin qarisimi
+body{
+    /*moterizede yaziriq - renglerin istiqameti(soldan sagam getsin);
+    derece(nece derecede bir birine qarissin).*/
+    background-image: linear-gradient(to right,#4e1e25,#ffdde1);
+
+
+    // background-image: linear-gradient(45deg,#ee9ca7,#ffdde1);
+    // background-image: radial-gradient();   /*rengler bir yerden baslayir*/
+}
+
+
+
+
+p{
+    font-size: 3rem;
+}
+
+ /*Scrol rengi vidthi:*/
+
+::-webkit-scrollbar{
+    width: 7px;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: blue;
+}
+
+// h2 {
+//     color: rebeccapurple;
+
+//     &::before {
+//         content: '#';
+//     }
+// }
+
+h2{
+    position: relative;
+    display: inline-block;
+    &:hover{
+        &::before{
+            width: 100%;
+        }
+    }
+    &::before{
+        content: '';
+        position: absolute;
+        /*Bu kodlar hemise before after da olur*/
+        bottom: 0;
+        right: 0;
+        width: 0%;
+        height: 3px;
+        background-color: red;
+        transition: .4s;
+
+    }
+}
+
+a{
+    border: 2px solid green;
+    color: green;
+    text-decoration: none;
+    padding: 15px 50px;
+    position: relative;
+    z-index: 1;   /*a href before after yuxarsina cixsin yazi gorunsun*/
+    &:hover{
+        &::after,&::before{
+            width: 100%;  /*ve ya 50%*/
+        }
+    }
+
+    &::after{
+        content: '';
+        position: absolute;
+        /*Bu kodlar hemise before after da olur*/
+        left: 0;
+        top: 0;
+        width: 0%;  /*ortadan kenarlara gelir background:
+        width 100%, transform scale 0 hover olanda tran scale 1*/
+        height: 100%;
+        background-color: orange;
+        transition: .4s;
+        z-index: -1;   /*a href before after yuxarsina cixsin yazi gorunsun*/
+    }
+
+    &::before{
+        content: '';
+        position: absolute;
+        /*Bu kodlar hemise before after da olur*/
+        right: 0;
+        top: 0;
+        width: 0%;
+        height: 100%;
+        background-color: orange;
+        transition: .4s;
+        z-index: -1;   /*a href before after yuxarsina cixsin yazi gorunsun*/
+    }
+}
